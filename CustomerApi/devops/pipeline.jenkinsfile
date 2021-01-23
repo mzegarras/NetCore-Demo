@@ -20,9 +20,7 @@ pipeline {
             steps {
                 sh ''' 
                     dotnet --version
-                    ls -lta
-                    ls -lta ./CustomerApi
-                    cd ./CustomerApi
+                   
 
                     dotnet restore
                     dotnet publish -c Release -o $DOTNET_CLI_HOME/out && \
