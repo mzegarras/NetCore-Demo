@@ -35,7 +35,7 @@ pipeline {
                     sh ''' 
                     ls -lta $DOTNET_CLI_HOME/out
                     '''
-                    archiveArtifacts artifacts: '/tmp/DOTNET_CLI_HOME/out', fingerprint: true, onlyIfSuccessful: true
+                    archiveArtifacts artifacts: '/tmp/DOTNET_CLI_HOME/out/**', fingerprint: true, onlyIfSuccessful: true
                 }
             }
         }
