@@ -10,6 +10,7 @@ pipeline {
                 sh ''' 
                     dotnet --version
                     ls -lta
+                    ls -lta ./CustomerApi
                     cd ./CustomerApi
                     
                     dotnet publish -c Release -o out && \
