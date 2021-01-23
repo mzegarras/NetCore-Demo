@@ -30,6 +30,11 @@ pipeline {
 
                 '''
             }
+             post{
+                success {
+                    archiveArtifacts artifacts: './CustomerApi/out', fingerprint: true, onlyIfSuccessful: true
+                }
+            }
         }
     }
 }
