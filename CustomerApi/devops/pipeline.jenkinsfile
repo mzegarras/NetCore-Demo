@@ -6,6 +6,10 @@ pipeline {
 
      environment {
         DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+        DOCKER_REPOSITORY= "mzegarra"
+        APP="devops"
+        APP_MODULE="customers-core"
+
     }
 
     stages {
@@ -16,10 +20,14 @@ pipeline {
                     ls -lta
                     ls -lta ./CustomerApi
                     cd ./CustomerApi
-                    
+
                     dotnet restore
                     dotnet publish -c Release -o out && \
                     rm -fr ./out/appsettings.json ./out/appsettings.Development.json 
+
+                    docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi"
+                    
+
                 '''
             }
         }
