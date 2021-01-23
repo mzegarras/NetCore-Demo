@@ -33,7 +33,7 @@ pipeline {
              post{
                 success {
                     sh ''' 
-                    ls -lta ./CustomerApi
+                    ls -lta $DOTNET_CLI_HOME/out
                     '''
                     archiveArtifacts artifacts: '$DOTNET_CLI_HOME/out', fingerprint: true, onlyIfSuccessful: true
                 }
