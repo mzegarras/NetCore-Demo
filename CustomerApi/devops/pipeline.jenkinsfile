@@ -11,7 +11,7 @@ pipeline {
                     dotnet --version
                     ls -lta
                     cd ./CustomerApi
-                    dotnet restore
+                    
                     dotnet publish -c Release -o out && \
                     rm -fr ./out/appsettings.json ./out/appsettings.Development.json 
                 '''
