@@ -25,7 +25,7 @@ pipeline {
                     dotnet publish -c Release -o out && \
                     rm -fr ./out/appsettings.json ./out/appsettings.Development.json 
 
-                    docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi"
+                    docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi
                     
 
                 '''
