@@ -35,7 +35,7 @@ pipeline {
                     sh ''' 
                     ls -lta ./CustomerApi
                     '''
-                    archiveArtifacts artifacts: '/CustomerApi/out', fingerprint: true, onlyIfSuccessful: true
+                    archiveArtifacts artifacts: '$DOTNET_CLI_HOME/out', fingerprint: true, onlyIfSuccessful: true
                 }
             }
         }
