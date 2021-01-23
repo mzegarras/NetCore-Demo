@@ -33,7 +33,7 @@ pipeline {
              post{
                 success {
                     sh ''' 
-                    ls --lta
+                    ls -lta
                     '''
                     archiveArtifacts artifacts: './out', fingerprint: true, onlyIfSuccessful: true
                 }
