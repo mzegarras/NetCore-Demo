@@ -10,6 +10,8 @@ pipeline {
                 sh ''' 
                     dotnet --version
                     ls -lta
+                    cd ./CustomerApi
+                    dotnet restore
                 '''
             }
         }
