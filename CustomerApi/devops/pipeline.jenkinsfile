@@ -1,8 +1,8 @@
 pipeline {
     // imagen dotnet
-    agent {
-        docker { image 'mcr.microsoft.com/dotnet/sdk:5.0' }
-    }
+    agent none
+
+    
 
      environment {
         DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
@@ -14,6 +14,9 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker { image 'mcr.microsoft.com/dotnet/sdk:5.0' }
+            }
             steps {
                 sh ''' 
                     dotnet --version
@@ -25,11 +28,10 @@ pipeline {
                     dotnet publish -c Release -o out && \
                     rm -fr ./out/appsettings.json ./out/appsettings.Development.json 
 
-                    docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi
-                    
-
                 '''
             }
         }
     }
 }
+
+//#docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi
