@@ -1,14 +1,17 @@
-        pipeline {
-            // imagen dotnet
-            agent {
-                docker { image 'mcr.microsoft.com/dotnet/sdk:5.0' }
-            }
+pipeline {
+    // imagen dotnet
+    agent {
+        docker { image 'mcr.microsoft.com/dotnet/sdk:5.0' }
+    }
 
-            stages {
-                stage('Build') {
-                    steps {
-                        sh 'dotnet --version'
-                    }
-                }
+    stages {
+        stage('Build') {
+            steps {
+                sh ''' 
+                    dotnet --version
+                    ls -lta
+                '''
             }
         }
+    }
+}
