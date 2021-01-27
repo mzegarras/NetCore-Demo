@@ -31,7 +31,7 @@ pipeline {
                     
                 '''
                 
-                  archiveArtifacts artifacts: '$env.WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/*', fingerprint: true,onlyIfSuccessful: true
+                  archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/', fingerprint: true,onlyIfSuccessful: true
 
             }
              post{
