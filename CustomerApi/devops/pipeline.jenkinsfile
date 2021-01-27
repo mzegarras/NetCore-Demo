@@ -23,8 +23,8 @@ pipeline {
                    
                     cd CustomerApi
                     dotnet restore
-                    dotnet publish -c Release -o ${env.DOTNET_CLI_HOME}/out && \
-                    rm -fr ${env.DOTNET_CLI_HOME}/out/appsettings.json $DOTNET_CLI_HOME/out/appsettings.Development.json 
+                    dotnet publish -c Release -o ${DOTNET_CLI_HOME}/out && \
+                    rm -fr ${DOTNET_CLI_HOME}/out/appsettings.json $DOTNET_CLI_HOME/out/appsettings.Development.json 
 
                 '''
             }
