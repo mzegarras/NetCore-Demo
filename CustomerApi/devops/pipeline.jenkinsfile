@@ -31,7 +31,7 @@ pipeline {
                     
                 '''
                 
-                  archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.dll', fingerprint: true,onlyIfSuccessful: true
+                  archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.dll, CustomerApi/bin/Release/net5.0/publish/*.config', fingerprint: true,onlyIfSuccessful: true
 
             }
              post{
