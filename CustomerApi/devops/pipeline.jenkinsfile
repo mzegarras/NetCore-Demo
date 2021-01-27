@@ -3,16 +3,17 @@ pipeline {
     agent none
 
     
-
-     environment {
-        DOTNET_CLI_HOME = "${WORKSPACE}-${JOB_NAME}-${BUILD_NUMBER}"
-        DOCKER_REPOSITORY= "mzegarra"
-        APP="devops"
-        APP_MODULE="customers-core"
-
-    }
+     
 
     stages {
+        environment {
+            DOTNET_CLI_HOME = "$WORKSPACE-$JOB_NAME-$BUILD_NUMBER"
+            DOCKER_REPOSITORY= "mzegarra"
+            APP="devops"
+            APP_MODULE="customers-core"
+
+        }
+    
         stage('Build') {
             agent {
                 docker { image 'mcr.microsoft.com/dotnet/sdk:5.0' }
