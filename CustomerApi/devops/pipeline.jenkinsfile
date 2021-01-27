@@ -5,7 +5,7 @@ pipeline {
     
 
      environment {
-        DOTNET_CLI_HOME = "${WORKSPACE}"
+        DOTNET_CLI_HOME = "${WORKSPACE}-${JOB_NAME}"
         DOCKER_REPOSITORY= "mzegarra"
         APP="devops"
         APP_MODULE="customers-core"
@@ -21,7 +21,7 @@ pipeline {
                 sh ''' 
                     dotnet --version
                    
-
+                    cd CustomerApi
                     dotnet restore
                     dotnet publish -c Release -o $DOTNET_CLI_HOME/out && \
                     rm -fr $DOTNET_CLI_HOME/out/appsettings.json $DOTNET_CLI_HOME/out/appsettings.Development.json 
