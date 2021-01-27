@@ -47,4 +47,4 @@ pipeline {
 
 //#docker build --file ./CustomerApi/devops/Dockerfile01 --tag $DOCKER_REPOSITORY/$APP-$APP_MODULE:${BUILD_NUMBER} ./CustomerApi
 //dotnet publish -c Release -o $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out && \
-                    rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json
+//                    rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json
