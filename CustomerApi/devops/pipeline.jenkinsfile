@@ -23,6 +23,7 @@ pipeline {
                      
                   
                     echo "Current workspace is $WORKSPACE"
+                                        echo "Current workspace is $DOTNET_CLI_HOME"
     
                     dotnet --version
                    
