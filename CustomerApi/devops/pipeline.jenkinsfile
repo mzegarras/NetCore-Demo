@@ -2,17 +2,17 @@ pipeline {
     // imagen dotnet
     agent none
 
-    
-     
-
-    stages {
-        environment {
+    environment {
             DOTNET_CLI_HOME = "$WORKSPACE-$JOB_NAME-$BUILD_NUMBER"
             DOCKER_REPOSITORY= "mzegarra"
             APP="devops"
             APP_MODULE="customers-core"
 
         }
+     
+
+    stages {
+        
     
         stage('Build') {
             agent {
@@ -30,8 +30,8 @@ pipeline {
                    
                     cd CustomerApi
                     dotnet restore
-                    dotnet publish -c Release -o ${DOTNET_CLI_HOME}/out && \
-                    rm -fr ${DOTNET_CLI_HOME}/out/appsettings.json $DOTNET_CLI_HOME/out/appsettings.Development.json 
+                    dotnet publish -c Release -o $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out && \
+                    rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json 
 
                 '''
             }
