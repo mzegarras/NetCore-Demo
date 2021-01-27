@@ -38,7 +38,7 @@ pipeline {
              post{
                 success {
                     sh ''' 
-                    ls -lta ${WORKSPACE}
+                    ls -lta $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out
                     '''
                 }
             }
