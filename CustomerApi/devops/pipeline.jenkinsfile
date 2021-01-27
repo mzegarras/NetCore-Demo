@@ -31,18 +31,32 @@ pipeline {
                     
                 '''
                 
-                  archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.dll', fingerprint: true,onlyIfSuccessful: true
-                  archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.config', fingerprint: true,onlyIfSuccessful: true
+                  
 
             }
              post{
                 success {
-                    sh ''' 
-                    ls -lta $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out
-                    '''
+                   archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.dll', fingerprint: true,onlyIfSuccessful: true
+                   archiveArtifacts artifacts: 'CustomerApi/bin/Release/net5.0/publish/*.config', fingerprint: true,onlyIfSuccessful: true
                 }
             }
         }
+        
+        
+         stage('Docker Build') {
+            agent any
+            steps {
+            
+                copyArtifacts filter: 'CustomerApi/bin/Release/net5.0/publish/',
+                              fingerprintArtifacts: true,
+                              projectName: '${JOB_NAME}',
+                              flatten: true,
+                              selector: specific('${BUILD_NUMBER}'),
+                              target: 'target';
+          
+            }
+         }
+        
     }
 }
 
