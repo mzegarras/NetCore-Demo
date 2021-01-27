@@ -30,10 +30,10 @@ pipeline {
                     dotnet publish -c Release -o $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out && \
                     rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json
                     
-                    archiveArtifacts artifacts: '$WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/*', fingerprint: true
-
-
                 '''
+                
+                  archiveArtifacts artifacts: '$WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/*', fingerprint: true,onlyIfSuccessful: true
+
             }
              post{
                 success {
