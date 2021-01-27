@@ -5,7 +5,7 @@ pipeline {
     
 
      environment {
-        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+        DOTNET_CLI_HOME = "${WORKSPACE}"
         DOCKER_REPOSITORY= "mzegarra"
         APP="devops"
         APP_MODULE="customers-core"
