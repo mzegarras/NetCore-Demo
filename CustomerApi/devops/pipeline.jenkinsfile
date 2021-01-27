@@ -21,17 +21,17 @@ pipeline {
             steps {
                 sh ''' 
                     
-                     
-                  
-                    echo "Current workspace is $WORKSPACE"
-                                        echo "Current workspace is $DOTNET_CLI_HOME"
+   
     
                     dotnet --version
                    
                     cd CustomerApi
                     dotnet restore
                     dotnet publish -c Release -o $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out && \
-                    rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json 
+                    rm -fr $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.json $WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/appsettings.Development.json
+                    
+                    archiveArtifacts artifacts: '$WORKSPACE-$JOB_NAME-$BUILD_NUMBER/out/*.*', fingerprint: true
+
 
                 '''
             }
