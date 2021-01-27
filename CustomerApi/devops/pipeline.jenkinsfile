@@ -21,10 +21,7 @@ pipeline {
                 sh ''' 
                     
                      
-                    // When using a GString at least later Jenkins versions could only handle the env.WORKSPACE variant:
-                    echo "Current workspace is ${env.WORKSPACE}"
-
-                    // the current Jenkins instances will support the short syntax, too:
+                  
                     echo "Current workspace is $WORKSPACE"
     
                     dotnet --version
